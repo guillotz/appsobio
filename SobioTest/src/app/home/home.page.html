@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to test your liveness?</strong>
+    <br />
+    <ion-button color="primary" (click)="buttonTest()">Test it</ion-button>
+    <br />
+    <ion-button color="secondary" (click)="dniTest()">DNI </ion-button>
+    <br />
+    <img *ngIf="image" [src]="getImageUrl()" />
+  </div>
+
+</ion-content>

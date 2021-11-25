@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cabecera">
+    <ion-title>Proceso Onboarding</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container contenedor">
+    
+    <ion-button expand="full" color="warning" (click)="iniciarProceso()">Iniciar Proceso</ion-button>
+    <ion-button expand="full" color="warning" (click)="testDNI()">Scan DNI</ion-button>
+    <ion-button expand="full" color="success" (click)="testPruebaVida()">Prueba Vida</ion-button>
+    <ion-button expand="full" color="success" (click)="testHttp()">Test HTTP</ion-button>
+  </div>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>

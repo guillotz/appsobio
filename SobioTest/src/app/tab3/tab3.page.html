@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cabecera">
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Configuración de aplicación
+      </ion-label>
+    </ion-list-header>
+
+
+
+    <ion-item>
+      <ion-label>Protocolo</ion-label>
+      <ion-select [(ngModel)]="protocolo" value="{{protocolo}}" okText="Seleccionar" cancelText="Cancelar">
+        <ion-select-option value="http://">HTTP</ion-select-option>
+        <ion-select-option value="https://">HTTPS</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>URL</ion-label>
+      <input type="text" [(ngModel)]="url" placeholder="{{url}}">
+    </ion-item>
+    <ion-item>
+      <ion-label>Url actual</ion-label>
+      <span>{{protocolo}}{{url}}</span>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" color="dark" (click)="aplicarConfiguracion()">Aplicar</ion-button>
+  <ion-button expand="full" color="warning">Ambiente Test</ion-button>
+  <ion-button expand="full" color="success">Ambiente Desa</ion-button>
+</ion-content>

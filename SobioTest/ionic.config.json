@@ -1,0 +1,7 @@
+{
+  "name": "SobioTest",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

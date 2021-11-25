@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-sobio" version="0.2.3">
+    <name>Sobio</name>
+    <description>Cordova Sobio Plugin</description>
+    <keywords>cordova,sobio</keywords>
+    <js-module src="www/sobio.js" name="SobioPlugin">
+        <clobbers target="SobioPlugin" />
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="SobioPlugin">
+          <param name="android-package" value="com.andromeda.latam.sobio.SobioPluginEntryPoint" />
+        </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest">
+          <uses-feature android:glEsVersion="0x00020000" />
+          <uses-permission android:name="android.permission.CAMERA" />
+          <uses-feature android:name="android.hardware.camera" />
+          <uses-feature android:name="android.hardware.camera.autofocus" />
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity android:name="com.andromeda.latam.sobio.component.faceDemo.SobioSelfieLivenessActivity"
+          android:label="Face Liveness Detection"
+          android:alwaysRetainTaskState="true"
+          android:launchMode="singleInstance"
+          android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+          android:exported="true">
+        </activity>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity android:theme="@style/Theme.AppCompat.Light" android:exported="false" android:launchMode="singleTop" android:name="com.andromeda.latam.sobio.id.DniCameraActivity" />
+      </config-file>
+      <source-file src="src/android/res/layout/activity_dni_camera.xml" target-dir="res/layout"/>
+      <source-file src="src/android/com/andromeda/latam/sobio/SobioPluginEntryPoint.java" target-dir="src/com/andromeda/latam/sobio/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/id/CaptureImageHelper.java" target-dir="src/com/andromeda/latam/sobio/id/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/id/DniCameraActivity.java" target-dir="src/com/andromeda/latam/sobio/id/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/id/FileHelper.java" target-dir="src/com/andromeda/latam/sobio/id/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/SobioHooks.java" target-dir="src/com/andromeda/latam/sobio/component/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/SobioSelfieLivenessResultCallback.java" target-dir="src/com/andromeda/latam/sobio/component/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/SobioSelfieLivenessResultContract.java" target-dir="src/com/andromeda/latam/sobio/component/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/SobioSelfieLivenessResultLauncherParams.java" target-dir="src/com/andromeda/latam/sobio/component/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/HIDDevice.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/HIDDeviceBLESteamController.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/HIDDeviceManager.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/HIDDeviceUSB.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/SDL.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/SDLAudioManager.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/SDLControllerManager.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/faceDemo/SobioSelfieLivenessActivity.java" target-dir="src/com/andromeda/latam/sobio/component/faceDemo" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/camera2/Camera2Helper.java" target-dir="src/com/andromeda/latam/sobio/component/camera2/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/camera2/Camera2Listener.java" target-dir="src/com/andromeda/latam/sobio/component/camera2/" />
+      <source-file src="src/android/com/andromeda/latam/sobio/component/camera2/ImageUtil.java" target-dir="src/com/andromeda/latam/sobio/component/camera2/" />
+      <resource-file src="src/android/jniLibs/arm64-v8a/libc++_shared.so" target="jniLibs/arm64-v8a/libc++_shared.so"/>
+      <resource-file src="src/android/jniLibs/arm64-v8a/libsobio_android.so" target="jniLibs/arm64-v8a/libsobio_android.so"/>
+      <resource-file src="src/android/jniLibs/armeabi-v7a/libc++_shared.so" target="jniLibs/armeabi-v7a/libc++_shared.so"/>
+      <resource-file src="src/android/jniLibs/armeabi-v7a/libsobio_android.so" target="jniLibs/armeabi-v7a/libsobio_android.so"/>
+      <resource-file src="src/android/jniLibs/x86/libc++_shared.so" target="jniLibs/x86/libc++_shared.so"/>
+      <resource-file src="src/android/jniLibs/x86/libsobio_android.so" target="jniLibs/x86/libsobio_android.so"/>
+      <resource-file src="src/android/jniLibs/x86_64/libc++_shared.so" target="jniLibs/x86_64/libc++_shared.so"/>
+      <resource-file src="src/android/jniLibs/x86_64/libsobio_android.so" target="jniLibs/x86_64/libsobio_android.so"/>
+      <resource-file src="src/android/jniLibs/x86_64/libsobio_android.so" target="jniLibs/x86_64/libsobio_android.so"/>
+      <resource-file src="src/android/jni/src/Android.mk" target="jni/src/Android.mk"/>
+      <resource-file src="src/android/jni/Android.mk" target="jni/Android.mk"/>
+      <resource-file src="src/android/jni/Application.mk" target="jni/Application.mk"/>
+      <framework src="androidx.appcompat:appcompat:1.3.1" />
+      <framework src="androidx.constraintlayout:constraintlayout:2.1.1" />
+      <framework src="androidx.core:core-ktx:1.6.0" />
+      <framework src="androidx.camera:camera-core:1.1.0-alpha03" />
+      <framework src="androidx.camera:camera-camera2:1.1.0-alpha03" />
+      <framework src="androidx.camera:camera-lifecycle:1.1.0-alpha03" />
+      <framework src="androidx.camera:camera-view:1.0.0-alpha23" />
+      <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
+      <resource-file src="src/android/res/drawable-land-hdpi/camara.png" target="res/drawable-land-hdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-hdpi/mark_picture.png" target="res/drawable-land-hdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-land-ldpi/camara.png" target="res/drawable-land-ldpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-ldpi/mark_picture.png" target="res/drawable-land-ldpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-land-mdpi/camara.png" target="res/drawable-land-mdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-mdpi/mark_picture.png" target="res/drawable-land-mdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-land-xhdpi/camara.png" target="res/drawable-land-xhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-xhdpi/mark_picture.png" target="res/drawable-land-xhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-land-xxhdpi/camara.png" target="res/drawable-land-xxhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-xxhdpi/mark_picture.png" target="res/drawable-land-xxhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-land-xxxhdpi/camara.png" target="res/drawable-land-xxxhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-land-xxxhdpi/mark_picture.png" target="res/drawable-land-xxxhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-hdpi/camara.png" target="res/drawable-port-hdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-hdpi/mark_picture.png" target="res/drawable-port-hdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-mdpi/camara.png" target="res/drawable-port-mdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-mdpi/mark_picture.png" target="res/drawable-port-mdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-ldpi/camara.png" target="res/drawable-port-ldpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-ldpi/mark_picture.png" target="res/drawable-port-ldpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-xhdpi/camara.png" target="res/drawable-port-xhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-xhdpi/mark_picture.png" target="res/drawable-port-xhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-xxhdpi/camara.png" target="res/drawable-port-xxhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-xxhdpi/mark_picture.png" target="res/drawable-port-xxhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/drawable-port-xxxhdpi/camara.png" target="res/drawable-port-xxxhdpi/camara.png" />
+      <resource-file src="src/android/res/drawable-port-xxxhdpi/mark_picture.png" target="res/drawable-port-xxxhdpi/mark_picture.png" />
+      <resource-file src="src/android/res/fonts/Swansea.ttf" target="assets/fonts/Swansea.ttf" />
+      <resource-file src="src/android/res/fonts/SwanseaBold.ttf" target="assets/fonts/SwanseaBold.ttf" />
+      <resource-file src="src/android/res/fonts/SwanseaItalic.ttf" target="assets/fonts/SwanseaItalic.ttf" />
+    </platform>
+</plugin>

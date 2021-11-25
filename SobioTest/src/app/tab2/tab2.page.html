@@ -1,0 +1,15 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="cabecera">
+    <ion-title>Pruebas Locales</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="container contenedor">
+    <ion-button expand="full" color="warning" (click)="scanDniLocal()">Local DNI</ion-button>
+    <ion-button expand="full" color="success" (click)="testPruebaVida()">Local Prueba Vida</ion-button>
+    <div *ngIf="objInfo?.frenteDNI && objInfo?.dorsoDNI">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(objInfo.frenteDNI)">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(objInfo.dorsoDNI)">
+    </div>
+  </div>
+</ion-content>
